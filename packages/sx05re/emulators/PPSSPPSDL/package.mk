@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="PPSSPPSDL"
-PKG_VERSION="6ca01d5882a1517b941d7d6ff80a37b64c372e92"
+PKG_VERSION="3403e28470966c11ff37d459677c8bba2f2c25d0"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MAME"
@@ -16,24 +16,18 @@ PKG_BUILD_FLAGS="+lto"
 
 
 PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_FFMPEG=ON \
-                        -DARMV7=ON \
                         -DUSING_FBDEV=ON \
                         -DUSING_EGL=ON \
                         -DUSING_GLES2=ON \
                         -DUSING_X11_VULKAN=OFF \
                         -DUSE_DISCORD=OFF"
 
-#-----H3
-if [ "$PROJECT" = "H3" ]; then
-PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_FFMPEG=ON \
-                        -DARMV7=ON \
-                        -DUSING_FBDEV=ON \
-                        -DUSING_EGL=OFF \
-                        -DUSING_GLES2=ON \
-                        -DUSING_X11_VULKAN=OFF \
-                        -DUSE_DISCORD=OFF"
+if [ $ARCH == "aarch64" ]; then
+PKG_CMAKE_OPTS_TARGET+=" -DARM64=ON"
+else
+PKG_CMAKE_OPTS_TARGET+=" -DARMV7=ON"
 fi
-#-----H3 END
+
 
 pre_configure_target() {
 if [ "$DEVICE" == "OdroidGoAdvance" ]; then

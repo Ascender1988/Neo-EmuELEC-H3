@@ -19,15 +19,15 @@ PKG_TOOLCHAIN="make"
 pre_configure_target() {
   
   if [ ${PROJECT} = "Amlogic-ng" ]; then
-	PKG_MAKE_OPTS_TARGET="platform=AMLG12B"
+	PKG_MAKE_OPTS_TARGET="platform=emuelec-n2"
   elif [ "${PROJECT}" = "Amlogic" ]; then
-	PKG_MAKE_OPTS_TARGET="platform=AMLGX"
+	PKG_MAKE_OPTS_TARGET="platform=emuelec"
   fi
   
   PKG_MAKE_OPTS_TARGET+=" CC=$CC LD=$CC"
   
-  sed -i -e "s|uname -a|echo armv|" \
-         -e "s|uname -m|echo armv|" \
+  sed -i -e "s|uname -a|echo aarch64|" \
+         -e "s|uname -m|echo aarch64|" \
          -e "s|LIBS = -lm|LIBS = |g" \
          -e "s|LIBS = |LIBS = -lm|g" \
     makefile

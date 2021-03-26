@@ -15,7 +15,9 @@ PKG_LONGDESC="Optimized/rewritten Nintendo 64 emulator made specifically for Lib
 PKG_TOOLCHAIN="make"
 PKG_BUILD_FLAGS="-lto"
 
-PKG_MAKE_OPTS_TARGET=" platform=${PROJECT}"
+make_target() {
+  make platform=emuelec64-armv8
+}
 
 if [ "${DEVICE}" == "OdroidGoAdvance" ]; then
 PKG_MAKE_OPTS_TARGET=" platform=Odroidgoa"

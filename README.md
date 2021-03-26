@@ -1,6 +1,5 @@
-# Retro emulation for Allwinner H3 devices.
+# THIS IS AN ARRCH64 UNSUPORTED VERSION, THERE WILL BE NO SUPPORT NOR HELP COMPILING THIS. MOST STUFF HAS NOT BEEN TESTED AND THIS README MIGHT NOT BE VALID! 
 
-Base on
 # EmuELEC  
 Retro emulation for Amlogic devices.  
 Based on  [CoreELEC](https://github.com/CoreELEC/CoreELEC) and [Lakka](https://github.com/libretro/Lakka-LibreELEC) with tidbits from [Batocera](https://github.com/batocera-linux/batocera.linux). I just combine them with [Batocera-Emulationstation](https://github.com/batocera-linux/batocera-emulationstation) and some standalone emulators ([Advancemame](https://github.com/amadvance/advancemame), [PPSSPP](https://github.com/hrydgard/ppsspp), [Reicast](https://github.com/reicast/reicast-emulator), [Amiberry](https://github.com/midwan/amiberry) and others). 
@@ -9,14 +8,14 @@ To build use:
 
 ```
 sudo apt update && sudo apt upgrade
-sudo apt-get install gcc make git unzip wget xz-utils libsdl2-dev libsdl2-mixer-dev libfreeimage-dev libfreetype6-dev libcurl4-openssl-dev rapidjson-dev libasound2-dev libgl1-mesa-dev build-essential libboost-all-dev cmake fonts-droid-fallback libvlc-dev libvlccore-dev vlc-bin texinfo premake4 golang libssl-dev curl patchelf xmlstarlet
+sudo apt-get install gcc make git unzip wget xz-utils libsdl2-dev libsdl2-mixer-dev libfreeimage-dev libfreetype6-dev libcurl4-openssl-dev rapidjson-dev libasound2-dev libgl1-mesa-dev build-essential libboost-all-dev cmake fonts-droid-fallback libvlc-dev libvlccore-dev vlc-bin texinfo premake4 golang libssl-dev curl patchelf
 git clone https://github.com/shantigilbert/EmuELEC.git EmuELEC    
 cd EmuELEC  
 git checkout master  
-PROJECT=Amlogic ARCH=arm DISTRO=EmuELEC make image   
+PROJECT=Amlogic ARCH=aarch64 DISTRO=EmuELEC make image   
 ```
-For the Odroid N2:   
-`PROJECT=Amlogic-ng ARCH=arm DISTRO=EmuELEC make image`
+For the Odroid N2/s905x2/s905x3/a311d:   
+`PROJECT=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC make image`
 
 if you want to build the addon: 
 ```

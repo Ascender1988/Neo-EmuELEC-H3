@@ -45,8 +45,7 @@ pre_configure_target() {
 export CFLAGS="`echo $CFLAGS | sed -e "s|-O.|-O2|g"`"
 
 TARGET_CONFIGURE_OPTS=""
-PKG_CONFIGURE_OPTS_TARGET="--enable-neon \
-                           --disable-qt \
+PKG_CONFIGURE_OPTS_TARGET="--disable-qt \
                            --enable-alsa \
                            --enable-udev \
                            --disable-opengl1 \
@@ -71,6 +70,10 @@ PKG_CONFIGURE_OPTS_TARGET+=" --enable-opengles3 \
 else
 PKG_CONFIGURE_OPTS_TARGET+=" --disable-kms \
                            --enable-mali_fbdev"
+fi
+
+if [ $ARCH == "arm" ]; then
+PKG_CONFIGURE_OPTS_TARGET+="--enable-neon"
 fi
 
 cd $PKG_BUILD
